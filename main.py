@@ -84,6 +84,6 @@ def ByWhat3Words():
 
     return render_template('ByWhat3Words.html', form=form)
 
-port = int(os.environ.get('PORT', 5000))
-app.run(port = port)
+# port = int(os.environ.get('PORT', 5000))
+# app.run(port = port)
 
