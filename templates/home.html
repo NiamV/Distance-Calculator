@@ -5,9 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+
+    <style>
+        .ul-Nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightgray;
+        }
+
+        .li-Nav {
+            float: left;
+            border-right:1px solid black;
+        }
+
+        .li-Nav:last-child {
+            border-right: none;
+        }
+
+        .li-Nav a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .li-Nav a:hover:not(.active) {
+            background-color: grey
+            }
+
+        .active {
+            background-color: rgb(245, 131, 131);
+            }
+    </style>
 </head>
 
 <body>
+    <ul class = "ul-Nav">
+        <li class = "li-Nav"><a class="active" href="/">Home</a></li>
+        <li class = "li-Nav"><a href="/ByCoordinate">Lat and Lon</a></li>
+    </ul>
     <h3>This website helps you calculate how far away two places are on the Earth. How would you like to define the two places: </h3>
 
     <a href="/ByCoordinate/">Latitute and Longitude</a>

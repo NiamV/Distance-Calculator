@@ -19,7 +19,7 @@
     <style>
         .LatLongTable {
             border: 1px solid black;
-            background-color: rgb(165, 220, 241); 
+            background-color: rgb(245, 131, 131);
             padding: 10px
         }
 
@@ -36,7 +36,7 @@
             width: 50%;
         }
 
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1200px) {
             .column {
                 width: 100%;
             }
@@ -48,11 +48,49 @@
             display: table;
             clear: both;
         }
+
+        .ul-Nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightgray;
+            }
+
+        .li-Nav {
+            float: left;
+            border-right:1px solid black;
+        }
+
+        .li-Nav:last-child {
+            border-right: none;
+        }
+
+        .li-Nav a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .li-Nav a:hover:not(.active) {
+            background-color: grey
+            }
+
+        .active {
+            background-color: rgb(245, 131, 131);
+            }
     </style>
 </head>
 
 <body>
-    <h1>Distance Calculator</h1>
+    <ul class = "ul-Nav">
+        <li class = "li-Nav"><a href="/">Home</a></li>
+        <li class = "li-Nav"><a class="active" href="/ByCoordinate">Lat and Lon</a></li>
+    </ul>
+
+    <h1> Distance Calculator </h1>
     <h2>Latitude and Longitude</h2>
 
     <div class="row">
