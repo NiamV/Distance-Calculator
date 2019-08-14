@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Distance</title>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: {
+             equationNumbers: {  autoNumber: "AMS"  },
+             extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+          }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    <style>
+        .LatLongTable {
+            border: 1px solid black;
+            background-color: rgb(165, 220, 241); 
+            padding: 10px
+        }
+
+        .LatLongTable th {
+            padding: 8px
+        }
+
+        .LatLongTable td {
+            padding: 8px
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Distance Calculator</h1>
+    <h2>Latitude and Longitude</h2>
+
+    <div class="row">
+        <div class="column">
+    
+            Please enter the coordinates of the two places you would like to find the distance between. Please enter in the following format:
+            <ul>
+                <li>Latitude is a number between -90 and 90</li>
+                <li>Longitude is a number between -180 and 180</li>
+            </ul> 
+
+            {% from "_formhelpers.html" import render_field %}
+            <form method="POST">
+                <table class = "LatLongTable">
+                    <tr>
+                        <th>Place 1</th>
+                        <td>{{ render_field(form.Latitude1) }}</td>
+                        <td>{{ render_field(form.Longitude1) }}</td>             
+                    </tr>
+                    <tr>
+                        <th>Place 2</th>
+                        <td>{{ render_field(form.Latitude2) }}</td>
+                        <td>{{ render_field(form.Longitude2) }}</td>             
+                    </tr>
+                    <tr>
+                        <td colspan = "3" align = "center"><input type = "submit" value = "Submit" /></td>
+                    </tr>
+                </table>
+            </form>
+            
+            {% if dis != "Error - please try again" and dis != "" %}
+                <h3> The distance is {{dis}} m </h3>
+                <img src={{url}}>
+            {% elif dis == "Error - please try again" %}
+                <h3> {{dis}} </h3>
+            {% endif %}
+        
+        </div>
+
+        <div class = "column">
+            The distance is calculated using spherical trigonometry. The formulae are:
+            
+            $$ cos(\delta) = sin(\phi_1) sin (\phi_2) + cos(\phi_1) cos (\phi_2) cos (L_1 - L_2) $$
+            $$ d = \delta \times R_{Earth} $$
+
+            Where:
+
+            <ul>
+                <li>\( \phi_1 \) is the latitute of place 1</li>
+                <li>\( L_1 \) is the longitude of place 1</li>
+                <li>\( \phi_2 \) is the latitude of place 2</li>
+                <li>\( L_2 \) is the longitude of place 2</li>
+                <li>\( R_{Earth} \) is the radius of the Earth</li>
+                <li>\( d \) is the distance between the two locations</li>
+            </ul>
+
+            Assuming the angles are converted to radians.
+        </div>
+    </div>
+
+</body>
